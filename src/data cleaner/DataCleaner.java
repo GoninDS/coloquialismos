@@ -22,7 +22,7 @@ public class DataCleaner {
       this.scanner = new Scanner(file);
       this.processFile();
     } catch (FileNotFoundException exception) {
-      System.out.println("ERROR: File not found " + fileName);
+      System.out.println("An error occurred.");
       exception.printStackTrace();
     }
   }
