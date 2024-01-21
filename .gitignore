@@ -6,6 +6,7 @@ thumbs.db
 # Data used for development
 data/corpus.txt
 testdata.txt
+test2.txt
 
 # Java class files
 *.class

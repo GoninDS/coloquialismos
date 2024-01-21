@@ -8,12 +8,15 @@ public class DataCleaner {
   private File file;
   private Scanner scanner;
   private StringCleaner stringCleaner;
-  private final String regex = "[^A-Za-z]";
+  private CleanFileWriter fileWriter;
+  // Allows everything but the Spanish alphabet characters in the sequence
+  private final String regex = "[^A-Za-z\\u00C0-\\u00FF ]";
 
   // Methods
   public DataCleaner(String fileName) {
     this.fileName = fileName;
     this.stringCleaner = new StringCleaner();
+    this.fileWriter = new CleanFileWriter("test2.txt");
   }
 
   public void cleanFile() {
@@ -29,20 +32,28 @@ public class DataCleaner {
 
   private void processFile() {
     String accumulatedData = "";
+    String buffer = "";
+    this.fileWriter.openFile();
 
     while (scanner.hasNextLine()) {
       String currentData = scanner.nextLine();
 
       if (currentData.startsWith("|")) {
-        System.out.println(stringCleaner.cleanString(accumulatedData, this.regex));
+        buffer = stringCleaner.cleanString(accumulatedData, this.regex);
+        this.fileWriter.write(buffer);
+        this.fileWriter.write("\n");
         accumulatedData = currentData;
       } else {
         // Add a space to replace the \n char
         accumulatedData += ' ' + currentData;
       }
     }
-    System.out.println(stringCleaner.cleanString(accumulatedData, this.regex));
 
+    buffer = stringCleaner.cleanString(accumulatedData, this.regex);
+    this.fileWriter.write(buffer);
+    this.fileWriter.write("\n");
+
+    this.fileWriter.closeFile();
     scanner.close();
   }
 }
