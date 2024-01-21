@@ -5,9 +5,10 @@ import java.util.Scanner;
 public class DataCleaner {
   // Attributes
   private String fileName;
-  File file;
-  Scanner scanner;
-  StringCleaner stringCleaner;
+  private File file;
+  private Scanner scanner;
+  private StringCleaner stringCleaner;
+  private final String regex = "[^A-Za-z]";
 
   // Methods
   public DataCleaner(String fileName) {
@@ -28,18 +29,19 @@ public class DataCleaner {
 
   private void processFile() {
     String accumulatedData = "";
+
     while (scanner.hasNextLine()) {
       String currentData = scanner.nextLine();
 
       if (currentData.startsWith("|")) {
-        stringCleaner.cleanString(accumulatedData);
+        System.out.println(stringCleaner.cleanString(accumulatedData, this.regex));
         accumulatedData = currentData;
       } else {
         // Add a space to replace the \n char
         accumulatedData += ' ' + currentData;
       }
     }
-    stringCleaner.cleanString(accumulatedData);
+    System.out.println(stringCleaner.cleanString(accumulatedData, this.regex));
 
     scanner.close();
   }
