@@ -33,7 +33,6 @@ public class DataCleaner {
   private void processFile() {
     String accumulatedData = "";
     String buffer = "";
-    this.fileWriter.openFile();
 
     while (scanner.hasNextLine()) {
       String currentData = scanner.nextLine();

@@ -1,31 +1,21 @@
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 
 public class CleanFileWriter {
   // Attributes
   private File file;
-  private FileWriter fileWriter;
+  private FileOutputStream outputStream;
+  private OutputStreamWriter writer;
 
   // Methods
   public CleanFileWriter(String filename) {
     try {
       this.file = new File(filename);
-      if (this.file.createNewFile()) {
-        System.out.println("File created: " + this.file.getName());
-      } else {
-        System.out.println("File already exists.");
-      }
-    } catch (IOException e) {
-      System.out.println("An error occurred.");
-      e.printStackTrace();
-    }
-  }
-
-  public void openFile() {
-    try {
-      this.fileWriter = new FileWriter(this.file.getName());
-    } catch (IOException e) {
+      this.outputStream = new FileOutputStream(this.file);
+      this.writer = new OutputStreamWriter(this.outputStream, "UTF-8");
+    } catch (Exception e) {
       System.out.println("An error occurred.");
       e.printStackTrace();
     }
@@ -33,7 +23,8 @@ public class CleanFileWriter {
 
   public void closeFile() {
     try {
-      this.fileWriter.close();
+      this.writer.close();
+      this.outputStream.close();
     } catch (IOException e) {
       System.out.println("An error occurred.");
       e.printStackTrace();
@@ -42,7 +33,7 @@ public class CleanFileWriter {
 
   public void write(String content) {
     try {
-      this.fileWriter.write(content);
+      this.writer.write(content);
     } catch (IOException e) {
       System.out.println("An error occurred.");
       e.printStackTrace();
