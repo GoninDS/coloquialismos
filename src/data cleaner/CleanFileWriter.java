@@ -10,11 +10,11 @@ public class CleanFileWriter {
   private OutputStreamWriter writer;
 
   // Methods
-  public CleanFileWriter(String filename) {
+  public CleanFileWriter(String filename, String encoding) {
     try {
       this.file = new File(filename);
       this.outputStream = new FileOutputStream(this.file);
-      this.writer = new OutputStreamWriter(this.outputStream, "UTF-8");
+      this.writer = new OutputStreamWriter(this.outputStream, encoding);
     } catch (Exception e) {
       System.out.println("An error occurred.");
       e.printStackTrace();
