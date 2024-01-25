@@ -51,7 +51,7 @@ public class DataCleaner {
       }
     }
 
-    buffer = stringCleaner.cleanString(accumulatedData, this.regex);
+    buffer = stringCleaner.cleanString(accumulatedData, this.regex, true);
     this.fileWriter.write(buffer);
     this.fileWriter.write("\n");
 
