@@ -5,7 +5,7 @@ public class StringCleaner {
   // Methods
   public StringCleaner() {}
 
-  public String cleanString(String dirtyString, String regex) {
+  public String cleanString(String dirtyString, String regex, boolean lowerCase) {
     // Return an empty string if the string is empty
     if (dirtyString.equals("")) {
       return "";
@@ -13,6 +13,8 @@ public class StringCleaner {
 
     Pattern pattern = Pattern.compile(regex);
     Matcher matcher = pattern.matcher(dirtyString);
-    return matcher.replaceAll("");
+    String cleanString = matcher.replaceAll("");
+
+    return lowerCase ? cleanString : cleanString.toLowerCase();
   }
 }

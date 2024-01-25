@@ -41,7 +41,7 @@ public class DataCleaner {
       String currentData = this.scanner.nextLine();
 
       if (currentData.startsWith("|")) {
-        buffer = stringCleaner.cleanString(accumulatedData, this.regex);
+        buffer = stringCleaner.cleanString(accumulatedData, this.regex, true);
         this.fileWriter.write(buffer);
         this.fileWriter.write("\n");
         accumulatedData = currentData;
