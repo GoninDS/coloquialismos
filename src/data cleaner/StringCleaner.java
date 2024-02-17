@@ -1,5 +1,6 @@
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.Locale;
 
 public class StringCleaner {
   // Methods
@@ -19,6 +20,7 @@ public class StringCleaner {
 
   public String cleanString(String dirtyString, String regex, boolean lowerCase) {
     String cleanString = this.cleanString(dirtyString, regex);
-    return lowerCase ? cleanString : cleanString.toLowerCase();
+    Locale locale = new Locale.Builder().setLanguage("es").build();
+    return lowerCase ? cleanString.toLowerCase(locale) : cleanString;
   }
 }
