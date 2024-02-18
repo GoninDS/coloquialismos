@@ -25,7 +25,7 @@ public class DataCleaner {
   public void cleanFile() {
     try {
       this.file = new File(this.fileName);
-      this.scanner = new Scanner(file, this.encoding);
+      this.scanner = new Scanner(this.file, this.encoding);
       this.processFile();
     } catch (FileNotFoundException exception) {
       System.out.println("An error occurred.");
