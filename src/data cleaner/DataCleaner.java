@@ -19,7 +19,7 @@ public class DataCleaner {
   public DataCleaner(String fileName) {
     this.fileName = fileName;
     this.stringCleaner = new StringCleaner();
-    this.fileWriter = new CleanFileWriter("test2.txt", encoding);
+    this.fileWriter = new CleanFileWriter("clean_data.txt", encoding);
   }
 
   public void cleanFile() {

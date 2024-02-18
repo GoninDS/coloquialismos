@@ -7,6 +7,7 @@ thumbs.db
 data/corpus.txt
 testdata.txt
 test2.txt
+clean_data.txt
 
 # Java class files
 *.class
