@@ -42,8 +42,10 @@ public class DataCleaner {
 
       if (currentData.startsWith("|")) {
         buffer = stringCleaner.cleanString(accumulatedData, this.regex, true);
-        this.fileWriter.write(buffer);
-        this.fileWriter.write("\n");
+        if (!buffer.equals("")) {
+          this.fileWriter.write(buffer);
+          this.fileWriter.write("\n");
+        }
         accumulatedData = currentData;
       } else {
         // Add a space to replace the \n char
