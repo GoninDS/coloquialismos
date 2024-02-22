@@ -48,7 +48,8 @@ public class WordReader {
   }
 
   private void updateWordsArray() {
-    this.words = this.scanner.nextLine().split(" +");
+    String line = this.scanner.nextLine().trim(); 
+    this.words = line.split(" +");
     this.currentWord = 0;
     ++this.currentLine;
   }
