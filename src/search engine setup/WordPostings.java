@@ -10,12 +10,7 @@ public class WordPostings {
   }
 
   public void IncreaseCount(int document) {
-    int occurrenceCount = 1;
-    // Update the occurrence count if it has already been inserted
-    if (this.postings.containsKey(document)) {
-      occurrenceCount = this.postings.get(document);
-      ++occurrenceCount;
-    }
-    this.postings.put(document, occurrenceCount);
+    int occurrenceCount = postings.getOrDefault(document, 0);
+    this.postings.put(document, ++occurrenceCount);
   }
 }
