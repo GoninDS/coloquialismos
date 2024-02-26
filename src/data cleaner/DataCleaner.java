@@ -12,20 +12,20 @@ public class DataCleaner {
 
   // Constants
   // Allows everything but the Spanish alphabet characters in the sequence
-  private final String regex = "[^A-Za-z\\u00C0-\\u00FF ]";
-  private final String encoding = "UTF-8";
+  private final String REGEX = "[^A-Za-z\\u00C0-\\u00FF ]";
+  private final String ENCODING = "UTF-8";
 
   // Methods
   public DataCleaner(String fileName) {
     this.fileName = fileName;
     this.stringCleaner = new StringCleaner();
-    this.fileWriter = new CleanFileWriter("clean_data.txt", encoding);
+    this.fileWriter = new CleanFileWriter("clean_data.txt", this.ENCODING);
   }
 
   public void cleanFile() {
     try {
       this.file = new File(this.fileName);
-      this.scanner = new Scanner(this.file, this.encoding);
+      this.scanner = new Scanner(this.file, this.ENCODING);
       this.processFile();
     } catch (FileNotFoundException exception) {
       System.out.println("An error occurred.");
@@ -41,7 +41,7 @@ public class DataCleaner {
       String currentData = this.scanner.nextLine();
 
       if (currentData.startsWith("|")) {
-        buffer = stringCleaner.cleanString(accumulatedData, this.regex, true);
+        buffer = stringCleaner.cleanString(accumulatedData, this.REGEX, true);
         buffer = buffer.trim();
         if (!buffer.equals("")) {
           this.fileWriter.write(buffer);
@@ -54,7 +54,7 @@ public class DataCleaner {
       }
     }
 
-    buffer = stringCleaner.cleanString(accumulatedData, this.regex, true);
+    buffer = stringCleaner.cleanString(accumulatedData, this.REGEX, true);
     this.fileWriter.write(buffer);
     this.fileWriter.write("\n");
 

@@ -10,7 +10,7 @@ public class WordPostings {
   }
 
   public void IncreaseCount(int document) {
-    int occurrenceCount = postings.getOrDefault(document, 0);
+    int occurrenceCount = this.postings.getOrDefault(document, 0);
     this.postings.put(document, ++occurrenceCount);
   }
 }

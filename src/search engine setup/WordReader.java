@@ -12,7 +12,7 @@ public class WordReader {
   private int currentLine;
 
   // Constants
-  private final String encoding = "UTF-8";
+  private final String ENCODING = "UTF-8";
 
   // Methods
   public WordReader(String filename) {
@@ -22,7 +22,7 @@ public class WordReader {
     try {
       this.fileName = filename;
       this.file = new File(this.fileName);
-      this.scanner = new Scanner(this.file, this.encoding);
+      this.scanner = new Scanner(this.file, this.ENCODING);
       // Read the first line of the file
       this.readNextLine();
     } catch (FileNotFoundException exception) {
