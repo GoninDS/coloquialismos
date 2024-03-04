@@ -9,7 +9,7 @@ public class WordPostings {
     this.postings = new HashMap<Integer, Integer>();
   }
 
-  public void IncreaseCount(int document) {
+  public void InsertPosting(int document) {
     int occurrenceCount = this.postings.getOrDefault(document, 0);
     this.postings.put(document, ++occurrenceCount);
   }
